@@ -6,7 +6,9 @@ export const Cart = (props) => {
       <h4>COMMANDE</h4>
       <div>
         {props.data.map((item) => (
-          <FoodInCart key={item.id} data={item} />
+          <FoodInCart key={item.id} data={item} 
+           decrementQuantity={props.decrementQuantity}
+           incrementQuantity={props.incrementQuantity}/>
         ))}
       </div>
       <div>
@@ -16,8 +18,7 @@ export const Cart = (props) => {
             (sum, currentItem) =>
               (sum += currentItem.price * currentItem.quantity),
             0
-          )} 
-          Dhs
+          )} Dhs
         </span>
       </div>
       <button>PASSER LA COMMANDE</button>

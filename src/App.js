@@ -15,10 +15,23 @@ export function App() {
       setfoodInCart((prevItems) => [...prevItems, item]);
     }
   };
+  const decrementQuantity = (item) => {
+    item.quantity -= 1;
+    setfoodInCart((prev) => {
+      const myarr = prev.filter((elm) => elm.quantity > 0);
+      return [...myarr];
+    });
+  };
+  const incrementQuantity = (item)=>{
+    item.quantity += 1;
+    setfoodInCart([...foodInCart]);
+  }
   return (
     <div className="d-flex justify-content-between">
       <FoodList food={foodItems} addItemToCart={addItemToCart} />
-      <Cart data={foodInCart} />
+      <Cart data={foodInCart} 
+      decrementQuantity={decrementQuantity} 
+      incrementQuantity={incrementQuantity} />
     </div>
   );
 }
