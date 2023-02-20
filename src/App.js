@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import { Cart } from "./components/Cart";
 import { FoodList } from "./components/FoodList";
+import Navbar from "./components/Navbar";
 import { Food } from "./Food";
+
 export function App() {
   const [foodItems, setFoodItems] = useState(Food);
   const [foodInCart, setfoodInCart] = useState([]);
@@ -22,16 +24,20 @@ export function App() {
       return [...myarr];
     });
   };
-  const incrementQuantity = (item)=>{
+  const incrementQuantity = (item) => {
     item.quantity += 1;
     setfoodInCart([...foodInCart]);
-  }
+  };
   return (
-    <div className="d-flex justify-content-between">
-      <FoodList food={foodItems} addItemToCart={addItemToCart} />
-      <Cart data={foodInCart} 
-      decrementQuantity={decrementQuantity} 
-      incrementQuantity={incrementQuantity} />
+    <div style={{minWidth:600}}>
+      <div className=" d-flex position-relative">
+        <FoodList food={foodItems} addItemToCart={addItemToCart} />
+        <Cart
+          data={foodInCart}
+          decrementQuantity={decrementQuantity}
+          incrementQuantity={incrementQuantity}
+        />
+      </div>
     </div>
   );
 }
