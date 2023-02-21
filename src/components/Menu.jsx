@@ -5,7 +5,7 @@ import SubNav from './SubNav'
 
 export default function Menu(props) {
   return (
-    <div style={{ minWidth: 600 }}>
+    <div className=' bg-light' style={{ minWidth: 600 }}>
       <div className=" d-flex position-relative">
         <div>
           <SubNav />

@@ -98,3 +98,22 @@ code {
    
   
 }
+#heroPara{
+  width: 50%;
+  font-size: 16;
+}
+#herobtn{
+  padding: 16px;
+}
+@media only screen and (max-width: 780px) {
+  #heroh1{
+    font-size: 35px;
+  }
+  #heroPara{
+    font-size: 14px;
+    width: 100%;
+  }
+  #herobtn{
+    padding: 10px;
+  }
+}
