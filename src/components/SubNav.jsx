@@ -45,6 +45,7 @@ export default function SubNav() {
       }
       return [...elm];
     });
+    //window.location.href = "#div3";
   };
   return (
     <div

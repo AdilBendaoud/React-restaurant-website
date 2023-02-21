@@ -1,9 +1,12 @@
 import { React, useState } from "react";
-import { Cart } from "./components/Cart";
-import { FoodList } from "./components/FoodList";
 import Navbar from "./components/Navbar";
 import { Food } from "./Food";
-import SubNav from "./components/SubNav";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import Error from "./components/Error";
+
+
 export function App() {
   const [foodItems, setFoodItems] = useState(Food);
   const [foodInCart, setfoodInCart] = useState([]);
@@ -28,22 +31,22 @@ export function App() {
     item.quantity += 1;
     setfoodInCart([...foodInCart]);
   };
-  const handleClick=(btn)=>{
-
-  }
   return (
-    <div style={{minWidth:600}}>
-       <div className=" d-flex position-relative">
-        <div>
-          <SubNav/>
-          <FoodList food={foodItems} addItemToCart={addItemToCart} />
-        </div>
-        <Cart
-          data={foodInCart}
-          decrementQuantity={decrementQuantity}
-          incrementQuantity={incrementQuantity}
-        />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" index element={<Home />} />
+      <Route
+        path="menu"
+        element={
+          <Menu
+            foodItems={foodItems}
+            addItemToCart={addItemToCart}
+            foodInCart={foodInCart}
+            decrementQuantity={decrementQuantity}
+            incrementQuantity={incrementQuantity}
+          />
+        }
+      />
+      <Route path="*" element={<Error/>}/>
+    </Routes>
   );
 }
