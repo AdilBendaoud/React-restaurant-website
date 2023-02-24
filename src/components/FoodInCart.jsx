@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { incrementQuantity, decrementQuantity } from "../store/cartSlice";
 
 export const FoodInCart = (props) => {
   const { foodName, price, foodImage, quantity } = props.data;
+  const dispatch = useDispatch();
   return (
     <div className='d-flex mb-3' style={{height:55}}>
       <img src={foodImage} alt={foodName} style={{width:40, height:40}} className=' rounded-3 mx-2' />
@@ -11,7 +14,9 @@ export const FoodInCart = (props) => {
           <p style={{fontSize:13}} className='fw-bold'>{price} Dhs</p>
         </div>
         <div>
-          <button className="btn bg-danger rounded-circle p-0 text-white" style={{width:24, height:24}} onClick={() => props.decrementQuantity(props.data)}>
+          <button className="btn bg-danger rounded-circle p-0 text-white" 
+                  style={{width:24, height:24}} 
+                  onClick={() => dispatch(decrementQuantity(props.data))}>
             {quantity === 1 ? (
               <i className="bi bi-x-lg"></i>
             ) : (
@@ -19,7 +24,9 @@ export const FoodInCart = (props) => {
             )}
           </button>
           <span className='mx-2'>{quantity}</span>
-          <div className="btn border-none bg-success rounded-circle p-0 text-white" style={{width:24, height:24}} onClick={() => props.incrementQuantity(props.data)}>
+          <div className="btn border-none bg-success rounded-circle p-0 text-white" 
+              style={{width:24, height:24}} 
+              onClick={() => dispatch(incrementQuantity(props.data))}>
             <i className="bi bi-plus-lg"></i>
           </div>
         </div>

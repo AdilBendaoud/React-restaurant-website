@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import pic from "../images/Heropic.jpg";
 export default function Home() {
   return (
-    <div style={{ backgroundImage: `url(${pic})`, height: "100vh" }}>
+    <div style={{backgroundSize:"cover" ,backgroundImage: `url(${pic})`, height: "100vh" }}>
       <Navbar />
       <div className="d-flex justify-content-center h-75 container flex-column">
         <h1 id="heroh1" className="mb-5 mb-sm-4 fw-bolder" style={{color:'#ed9f40'}}>

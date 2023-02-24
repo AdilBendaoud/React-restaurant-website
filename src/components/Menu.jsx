@@ -1,15 +1,18 @@
-import React from 'react'
-import { Cart } from './Cart'
-import { FoodList } from './FoodList'
-import SubNav from './SubNav'
+import React from "react";
+import { Cart } from "./Cart";
+import { FoodList } from "./FoodList";
+import SubNav from "./SubNav";
 
 export default function Menu(props) {
   return (
-    <div className=' bg-light' style={{ minWidth: 600 }}>
+    <div className=" bg-light" style={{ minWidth: 600 }}>
       <div className=" d-flex position-relative">
         <div>
           <SubNav />
-          <FoodList food={props.foodItems} addItemToCart={props.addItemToCart} />
+          <FoodList
+            food={props.foodItems}
+            addItemToCart={props.addItemToCart}
+          />
         </div>
         <Cart
           data={props.foodInCart}
@@ -18,5 +21,5 @@ export default function Menu(props) {
         />
       </div>
     </div>
-  )
+  );
 }

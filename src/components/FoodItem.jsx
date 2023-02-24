@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../store/cartSlice";
 
 export const FoodItem = (props) => {
   const { id, foodName, price, foodImage } = props.data;
+  const dispatch = useDispatch();
   return (
     <div className="col col-xxl-3 col-xl-4 col-lg-6 mb-5">
       <div className="card" style={{ width: "18rem" }}>
@@ -10,7 +13,10 @@ export const FoodItem = (props) => {
           <h5 className="card-title fw-bold">{foodName}</h5>
           <span className="card-text fw-bold">{price} Dhs</span>
           <button
-            onClick={() => props.addItemToCart(props.data)}
+            onClick={() => {
+              let item = {...props.data , quantity :1}
+              dispatch(addItemToCart(item))
+            }}
             className="btn btn-primary float-end p-0"
             style={{ width: 40, height: 40, borderRadius: 10 }}
           >
