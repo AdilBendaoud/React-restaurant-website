@@ -1,14 +1,23 @@
 import React from "react";
-import { FoodItem } from "./FoodItem";
+import { Food } from "../Food";
+import FoodCategory from "./FoodCategory";
 
-export const FoodList = (props) => {
+
+export const FoodList = () => {
+
+  const foodByCategory = Food.reduce((acc, curr) => {
+    acc[curr.category] = [...acc[curr.category] || [], curr];
+    return acc;
+  }, {});
+  
   return (
     <div className='w-100 container'>
-      <div className='row'>
-        {props.food.map((item) => (
-          <FoodItem key={item.id} data={item} addItemToCart={props.addItemToCart}/>
-        ))}
-      </div>
+      {
+        Object.entries(foodByCategory).map(([category, foods])=>(
+          <FoodCategory key={category} category={category} foods={foods} />
+        ))
+      }
     </div>
   );
 };
+ 

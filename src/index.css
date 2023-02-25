@@ -130,3 +130,7 @@ code {
 #cardDiv{
   max-width: 450px;
 }
+#subNav .active{
+  background-color: #0A5551;
+  color: white;
+}

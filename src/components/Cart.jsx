@@ -1,7 +1,7 @@
 import React from "react";
 import { FoodInCart } from "./FoodInCart";
 import { useSelector } from "react-redux";
-export const Cart = (props) => {
+export const Cart = () => {
   const cartItem = useSelector((state) => state.cart.foodInCart);
   return (
     <div className="pt-4 position-sticky" style={{height:"100vh",width:300,top:0}}>
@@ -11,8 +11,6 @@ export const Cart = (props) => {
           <FoodInCart
             key={item.id}
             data={item}
-            decrementQuantity={props.decrementQuantity}
-            incrementQuantity={props.incrementQuantity}
           />
         ))}
       </div>
